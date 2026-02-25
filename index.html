@@ -420,7 +420,7 @@ section { padding: 120px 64px; }
 }
 .video-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2px;
   margin-bottom: 48px;
 }
@@ -430,7 +430,7 @@ section { padding: 120px 64px; }
   background: #0d0d0d;
   border: 1px solid var(--rule-dark);
   overflow: hidden;
-  cursor: none;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -988,96 +988,70 @@ footer {
   <div class="section-label reveal">04 · Portfolio</div>
   <div class="section-title reveal">Quelques projets.</div>
   <div class="portfolio-intro reveal">Productions représentatives. Chaque film est pensé comme un outil de communication, pas un décor.</div>
+  <!-- VIDEO LIGHTBOX MODAL -->
+  <div id="video-modal" style="display:none;position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;">
+    <div style="position:relative;width:90vw;max-width:1000px;aspect-ratio:16/9;">
+      <iframe id="video-modal-iframe" src="" frameborder="0" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen style="width:100%;height:100%;"></iframe>
+    </div>
+    <button id="video-modal-close" style="position:fixed;top:32px;right:40px;background:none;border:none;color:#f4f3ef;font-size:32px;cursor:pointer;font-weight:100;line-height:1;z-index:2001;">✕</button>
+  </div>
+
   <div class="video-grid">
-    <!-- Carte 1 - remplacer href par lien YouTube/Vimeo -->
-    <div class="video-card reveal">
+    <!-- Wedding trailer -->
+    <div class="video-card reveal" data-videoid="PAhnot-kxko" style="cursor:pointer;">
       <div class="video-thumb">
-        <div class="video-thumb-placeholder">Film corporate<br>— à venir —</div>
+        <div class="video-thumb-placeholder">Wedding Trailer</div>
       </div>
       <div class="video-overlay"></div>
       <div class="video-play">
         <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
       <div class="video-info">
-        <div class="video-title">Film institutionnel</div>
-        <div class="video-client">Eco Chaud Concept · 2025</div>
+        <div class="video-title">Wedding Trailer</div>
+        <div class="video-client">Cinematic · 2024</div>
       </div>
-      <a href="https://youtube.com" target="_blank" rel="noopener"></a>
     </div>
-    <!-- Carte 2 -->
-    <div class="video-card reveal">
+    <!-- BMW 635 I -->
+    <div class="video-card reveal" data-videoid="Br9ROGKTOvg" style="cursor:pointer;">
       <div class="video-thumb">
-        <div class="video-thumb-placeholder">Contenus digitaux<br>— à venir —</div>
+        <div class="video-thumb-placeholder">BMW 635 I</div>
       </div>
       <div class="video-overlay"></div>
       <div class="video-play">
         <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
       <div class="video-info">
-        <div class="video-title">Stratégie & contenus vidéo</div>
-        <div class="video-client">Eco Chaud Concept · 2025–2026</div>
+        <div class="video-title">BMW 635 I — Cinematic Video</div>
+        <div class="video-client">Automobile · 2024</div>
       </div>
-      <a href="https://youtube.com" target="_blank" rel="noopener"></a>
     </div>
-    <!-- Carte 3 -->
-    <div class="video-card reveal">
+    <!-- Just no reason -->
+    <div class="video-card reveal" data-videoid="EfhRW2Qs4bU" style="cursor:pointer;">
       <div class="video-thumb">
-        <div class="video-thumb-placeholder">Production Bali<br>— à venir —</div>
+        <div class="video-thumb-placeholder">Short Film</div>
       </div>
       <div class="video-overlay"></div>
       <div class="video-play">
         <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
       <div class="video-info">
-        <div class="video-title">Vidéos promotionnelles</div>
-        <div class="video-client">PT BALIMMO · Bali, 2025</div>
+        <div class="video-title">Just No Reason — Short Film</div>
+        <div class="video-client">Fiction · 2024</div>
       </div>
-      <a href="https://youtube.com" target="_blank" rel="noopener"></a>
     </div>
-    <!-- Carte 4 -->
-    <div class="video-card reveal">
+    <!-- Mandalika GT Asia 2025 -->
+    <div class="video-card reveal" data-videoid="vY26Va2mIpo" style="cursor:pointer;">
       <div class="video-thumb">
-        <div class="video-thumb-placeholder">Film cinéma<br>— à venir —</div>
+        <div class="video-thumb-placeholder">Mandalika GT Asia</div>
       </div>
       <div class="video-overlay"></div>
       <div class="video-play">
         <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
       </div>
       <div class="video-info">
-        <div class="video-title">Film projeté en cinéma</div>
-        <div class="video-client">KEDGE Business School · 2024</div>
+        <div class="video-title">Mandalika GT Asia 2025</div>
+        <div class="video-client">Sport automobile · Indonésie, 2025</div>
       </div>
-      <a href="https://youtube.com" target="_blank" rel="noopener"></a>
-    </div>
-    <!-- Carte 5 -->
-    <div class="video-card reveal">
-      <div class="video-thumb">
-        <div class="video-thumb-placeholder">Reportage événement<br>— à venir —</div>
-      </div>
-      <div class="video-overlay"></div>
-      <div class="video-play">
-        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
-      <div class="video-info">
-        <div class="video-title">Couverture événementielle</div>
-        <div class="video-client">KEDGE Business School · 2023–2024</div>
-      </div>
-      <a href="https://youtube.com" target="_blank" rel="noopener"></a>
-    </div>
-    <!-- Carte 6 -->
-    <div class="video-card reveal">
-      <div class="video-thumb">
-        <div class="video-thumb-placeholder">Portfolio photo<br>— à venir —</div>
-      </div>
-      <div class="video-overlay"></div>
-      <div class="video-play">
-        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
-      </div>
-      <div class="video-info">
-        <div class="video-title">Portfolio photo corporate</div>
-        <div class="video-client">Various · 2024–2026</div>
-      </div>
-      <a href="https://faustinlaussu.com" target="_blank" rel="noopener"></a>
     </div>
   </div>
   <div class="portfolio-cta reveal">
@@ -1168,7 +1142,7 @@ footer {
         </div>
         <div class="contact-item">
           <span class="contact-key">Email</span>
-          <a href="/cdn-cgi/l/email-protection#4e282f3b3d3a27200e2f233e2227283763282722233d602d2123" class="contact-val"><span class="__cf_email__" data-cfemail="bcdaddc9cfc8d5d2fcddd1ccd0d5dac591dad5d0d1cf92dfd3d1">[email&#160;protected]</span></a>
+          <a href="mailto:contact@amplify-productions.fr" class="contact-val">contact@amplify-productions.fr</a>
         </div>
         <div class="contact-item">
           <span class="contact-key">Localisation</span>
@@ -1204,7 +1178,7 @@ footer {
   <div class="footer-right">amplify-films.com</div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── INIT ─────────────────────────────────────────────────────
 document.body.classList.add('js-ready');
 
@@ -1260,53 +1234,58 @@ setTimeout(() => {
   document.querySelectorAll('.reveal, .step').forEach(el => el.classList.add('visible'));
 }, 1500);
 
+// ── VIDEO MODAL ──────────────────────────────────────────────
+const modal = document.getElementById('video-modal');
+const modalIframe = document.getElementById('video-modal-iframe');
+const modalClose = document.getElementById('video-modal-close');
+
+function openVideo(videoId) {
+  modal.style.display = 'flex';
+  modalIframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+  document.body.style.overflow = 'hidden';
+}
+function closeVideo() {
+  modal.style.display = 'none';
+  modalIframe.src = '';
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeVideo);
+modal.addEventListener('click', e => { if (e.target === modal) closeVideo(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeVideo(); });
+
 // ── YOUTUBE THUMBNAILS ───────────────────────────────────────
-document.querySelectorAll('.video-card').forEach(card => {
-  const link = card.querySelector('a');
-  if (!link) return;
-  const href = link.getAttribute('href');
-  if (!href) return;
+document.querySelectorAll('.video-card[data-videoid]').forEach(card => {
+  const videoId = card.dataset.videoid;
+  if (!videoId) return;
 
-  // Extract YouTube video ID from various URL formats
-  let videoId = null;
-  const patterns = [
-    /youtube\.com\/watch\?v=([^&]+)/,
-    /youtu\.be\/([^?&]+)/,
-    /youtube\.com\/embed\/([^?&]+)/,
-    /youtube\.com\/shorts\/([^?&]+)/,
-  ];
-  for (const pattern of patterns) {
-    const match = href.match(pattern);
-    if (match) { videoId = match[1]; break; }
-  }
-
-  if (videoId) {
-    const thumb = card.querySelector('.video-thumb');
-    if (thumb) {
-      // Try maxresdefault first, fallback to hqdefault
-      const img = new Image();
-      img.onload = () => {
-        thumb.style.backgroundImage = `url(${img.src})`;
+  // Load thumbnail
+  const thumb = card.querySelector('.video-thumb');
+  if (thumb) {
+    const img = new Image();
+    img.onload = () => {
+      thumb.style.backgroundImage = `url(${img.src})`;
+      thumb.style.backgroundSize = 'cover';
+      thumb.style.backgroundPosition = 'center';
+      const placeholder = thumb.querySelector('.video-thumb-placeholder');
+      if (placeholder) placeholder.style.display = 'none';
+    };
+    img.onerror = () => {
+      const img2 = new Image();
+      img2.onload = () => {
+        thumb.style.backgroundImage = `url(${img2.src})`;
         thumb.style.backgroundSize = 'cover';
         thumb.style.backgroundPosition = 'center';
         const placeholder = thumb.querySelector('.video-thumb-placeholder');
         if (placeholder) placeholder.style.display = 'none';
       };
-      img.onerror = () => {
-        // Fallback to hqdefault
-        const img2 = new Image();
-        img2.onload = () => {
-          thumb.style.backgroundImage = `url(${img2.src})`;
-          thumb.style.backgroundSize = 'cover';
-          thumb.style.backgroundPosition = 'center';
-          const placeholder = thumb.querySelector('.video-thumb-placeholder');
-          if (placeholder) placeholder.style.display = 'none';
-        };
-        img2.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-      };
-      img.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    }
+      img2.src = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    };
+    img.src = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   }
+
+  // Click to open modal
+  card.addEventListener('click', () => openVideo(videoId));
 });
 
 // ── ACTIVE NAV ────────────────────────────────────────────────
