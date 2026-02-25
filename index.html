@@ -799,6 +799,96 @@ footer {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ── MOBILE NAV HAMBURGER ─────────────────────────────────── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 200;
+}
+.nav-hamburger span {
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--paper);
+  transition: transform 0.3s, opacity 0.3s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Base */
+  section { padding: 80px 24px; }
+
+  /* Nav */
+  nav { padding: 20px 24px; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(11,11,11,0.98);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    z-index: 150;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 16px; letter-spacing: .2em; color: #bbb; }
+  .nav-links a:hover { color: var(--paper); }
+  .nav-cta { border: none !important; padding: 0 !important; font-size: 16px !important; }
+  .nav-hamburger { display: flex; position: relative; z-index: 200; }
+  .motion-nav { width: 80px; height: 30px; }
+  .ghost-nav .nb { font-size: 26px; }
+  .ghost-nav .na { font-size: 17px; }
+
+  /* Hero */
+  #hero { padding: 120px 24px 80px; }
+  .motion-hero { width: 100%; height: 100px; }
+  .ghost-hero .hb { font-size: 88px; }
+  .ghost-hero .ha { font-size: 59px; }
+  .hero-tagline { font-size: 32px; margin-bottom: 28px; }
+  .hero-sub { font-size: 14px; margin-bottom: 48px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .hero-scroll { left: 24px; }
+  .section-title { font-size: 36px; margin-bottom: 40px; }
+
+  /* Prestations */
+  .presta-grid { grid-template-columns: 1fr; }
+  .presta-card { padding: 36px 28px; }
+
+  /* Méthode */
+  .methode-inner { grid-template-columns: 1fr; gap: 40px; }
+  .methode-intro { position: static; }
+
+  /* Portfolio */
+  .video-grid { grid-template-columns: 1fr; }
+
+  /* À propos */
+  .apropos-inner { grid-template-columns: 1fr; gap: 48px; }
+  .apropos-name { font-size: 52px; }
+  .apropos-sidebar { }
+  .sidebar-block { background: #0f0f0f; }
+
+  /* Contact */
+  .contact-inner { grid-template-columns: 1fr; gap: 56px; }
+  .contact-headline { font-size: 48px; }
+
+  /* Footer */
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 28px 24px; }
+
+  /* Modal video */
+  #video-modal > div { width: 95vw; }
+
+  /* Chatbot */
+  #chat-window { width: calc(100vw - 48px); right: 24px; }
+}
 </style>
 </head>
 <body>
@@ -818,12 +908,15 @@ footer {
       <div class="ghost-nav" style="--bl:2px;--op:.18;--tx:10px;--sx:.97"><span class="nb">[</span><span class="na">A</span><span class="nb">]</span></div>
     </div>
   </a>
-  <div class="nav-links">
-    <a href="#prestations">Prestations</a>
-    <a href="#methode">Méthode</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#apropos">À propos</a>
-    <a href="#contact" class="nav-cta">Contact</a>
+  <div class="nav-links" id="nav-links">
+    <a href="#prestations" onclick="closeMenu()">Prestations</a>
+    <a href="#methode" onclick="closeMenu()">Méthode</a>
+    <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+    <a href="#apropos" onclick="closeMenu()">À propos</a>
+    <a href="#contact" class="nav-cta" onclick="closeMenu()">Contact</a>
+  </div>
+  <div class="nav-hamburger" id="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
@@ -1141,7 +1234,7 @@ footer {
         </div>
         <div class="contact-item">
           <span class="contact-key">Email</span>
-          <a href="mailto:contact@amplify-productions.fr" class="contact-val">contact@amplify-productions.fr</a>
+          <a href="/cdn-cgi/l/email-protection#6d0e0203190c0e192d0c001d01040b14401d1f0209180e190402031e430b1f" class="contact-val"><span class="__cf_email__" data-cfemail="7e1d11100a1f1d0a3e1f130e12171807530e0c111a0b1d0a1711100d50180c">[email&#160;protected]</span></a>
         </div>
         <div class="contact-item">
           <span class="contact-key">Localisation</span>
@@ -1177,7 +1270,7 @@ footer {
   <div class="footer-right">amplify-films.com</div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── INIT ─────────────────────────────────────────────────────
 document.body.classList.add('js-ready');
 
@@ -1196,6 +1289,18 @@ document.querySelectorAll('a, button, .presta-card, .video-card').forEach(el => 
 window.addEventListener('scroll', () => {
   document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
 });
+
+// ── HAMBURGER MENU ────────────────────────────────────────────
+function toggleMenu() {
+  const links = document.getElementById('nav-links');
+  const burger = document.getElementById('nav-hamburger');
+  links.classList.toggle('open');
+  burger.classList.toggle('open');
+}
+function closeMenu() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('nav-hamburger').classList.remove('open');
+}
 
 // ── REVEAL ON SCROLL ──────────────────────────────────────────
 const observer = new IntersectionObserver(entries => {
@@ -1350,7 +1455,4 @@ document.querySelectorAll('.step').forEach((el, i) => {
   stepObs.observe(el);
 });
 
-// ── SMOOTH ACTIVE NAV ───────────────────────────────────────
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
+// ── SMOOTH ACTIVE NAV ────�
